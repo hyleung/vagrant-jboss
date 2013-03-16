@@ -1,0 +1,8 @@
+---
+:backends: yaml
+:yaml:
+  :datadir: /etc/puppet
+:hierarchy: 
+    - common
+    - jboss-config
+:logger: console
