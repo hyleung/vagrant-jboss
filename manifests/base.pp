@@ -9,7 +9,16 @@ class jbossdev::configure{
         "jboss":
             ensure => present;
     }
-    file {
+    package {
+        "wget":
+            ensure => installed;
+    }
+    exec {
+        "wget-jboss":
+            require => [File["/var/lib/puppet/files"],Package["wget"]],
+            command => "/usr/bin/wget http://download.jboss.org/jbossas/6.1/jboss-as-distribution-6.1.0.Final.zip -o /var/lib/puppet/files/jboss-as-distribution-6.1.0.Final.zip";
+    }
+    file {        
         "/etc/puppet/hiera.yaml":
             source => "/vagrant/files/hiera.yaml";
         "/etc/puppet/common.yaml":
@@ -23,9 +32,6 @@ class jbossdev::configure{
             require => File["/var/lib/puppet/files"];   
         "/var/lib/puppet/files":
             ensure => directory;        
-        "/var/lib/puppet/files/jboss-as-distribution-6.1.0.Final.zip":
-            source => "/vagrant/files/jboss-as-distribution-6.1.0.Final.zip",
-            require => File["/var/lib/puppet/files"];
     }   
   
 }
