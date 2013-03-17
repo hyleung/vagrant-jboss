@@ -1,3 +1,4 @@
 #common.yaml
 foo: "bar"
 myclass::parameter_one: "yo!"
+jbossdev::configure::myparam: "Four score and seven years ago..."
