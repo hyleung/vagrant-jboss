@@ -16,6 +16,7 @@ class jbossdev::configure{
     exec {
         "wget-jboss":
             require => [File["/var/lib/puppet/files"],Package["wget"]],
+            cwd => "/tmp",
             command => "/usr/bin/wget http://download.jboss.org/jbossas/6.1/jboss-as-distribution-6.1.0.Final.zip -o /var/lib/puppet/files/jboss-as-distribution-6.1.0.Final.zip";
     }
     file {        
