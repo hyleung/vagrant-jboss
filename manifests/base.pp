@@ -1,5 +1,6 @@
 node  jbossdev {
     include java
+    include jboss
     include jbossdev::configure
 }
 
@@ -9,16 +10,7 @@ class jbossdev::configure{
         "jboss":
             ensure => present;
     }
-    package {
-        "wget":
-            ensure => installed;
-    }
-    exec {
-        "wget-jboss":
-            require => [File["/var/lib/puppet/files"],Package["wget"]],
-            cwd => "/tmp",
-            command => "/usr/bin/wget http://download.jboss.org/jbossas/6.1/jboss-as-distribution-6.1.0.Final.zip -o /var/lib/puppet/files/jboss-as-distribution-6.1.0.Final.zip";
-    }
+
     file {        
         "/etc/puppet/hiera.yaml":
             source => "/vagrant/files/hiera.yaml";
