@@ -2,14 +2,19 @@ node  jbossdev {
     include java
     include jboss
     include jbossdev::configure
+    
+    Exec { path => [ "/bin/", "/sbin/" , "/usr/bin/", "/usr/sbin/" ] }
+    jboss::install {
+        "as1":
+            baseDir => "/opt",
+            version => "jboss-6.1.0.Final",
+            serverConf => "minimal";
+    }
 }
 
 
 class jbossdev::configure{
-    group {
-        "jboss":
-            ensure => present;
-    }
+
 
     file {        
         "/etc/puppet/hiera.yaml":
