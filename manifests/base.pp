@@ -8,7 +8,7 @@ node  jbossdev {
         "as1":
             baseDir => "/opt",
             version => "jboss-6.1.0.Final",
-            serverConf => "minimal";
+            serverConf => "standard";
     }
 }
 

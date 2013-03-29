@@ -27,10 +27,12 @@ define jboss::install($baseDir,
     exec {
         "unzip-jboss":
             command => "unzip -o /var/lib/puppet/files/${version}.zip -d ${baseDir}",
+            creates => "${baseDir}/${version}",
             require => [File["/var/lib/puppet/files/${version}.zip"], 
                         File["${baseDir}"],
                         Package["unzip"]];
-    } ->  Notify["unzip completed"]
+    } ->  File["${baseDir}/${version}"]
+    
     file {
         "${baseDir}/${version}":            
             owner => "${user}",
@@ -45,9 +47,6 @@ define jboss::install($baseDir,
             mode => 0755,
             content => template("jboss/jboss.sh.erb");
     }
-    notify {
-        "unzip completed":
-            message => "'${version}' unzipped to directory ${baseDir}"
-    }
+
     
 }
