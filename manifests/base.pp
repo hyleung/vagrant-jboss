@@ -10,6 +10,18 @@ node  jbossdev {
             version => "jboss-6.1.0.Final",
             serverConf => "standard";
     }
+    jboss::xaDatasource {
+        "mobilePanel":
+            dsClass => "oracle.jdbc.xa.client.OracleXADataSource",
+            dsUrl => "jdbc:oracle:thin:@127.0.0.1:1521:XE",
+            dsUser => "mobilepanel",
+            dsPassword => "password",
+            dsExceptionSorterClass => "org.jboss.resource.adapter.jdbc.vendor.OracleExceptionSorter",
+            dsTypeMapping => "Oracle11g",
+            baseDir => "/opt",
+            version => "jboss-6.1.0.Final",
+            serverConf => "standard";
+    } <- Jboss::Install["as1"]
 }
 
 
