@@ -22,6 +22,14 @@ node  jbossdev {
             version => "jboss-6.1.0.Final",
             serverConf => "standard";
     } <- Jboss::Install["as1"]
+
+    jboss::lib {
+        "ojdbc5.jar":
+            baseDir=> "/opt",
+            version => "jboss-6.1.0.Final",
+            serverConf => "standard",
+            libFile => "/vagrant/files/ojdbc5.jar",            
+    } <- Jboss::Install["as1"] 
 }
 
 
