@@ -1,10 +1,18 @@
 # JBoss Application Server
 jboss::install:
-        baseDir: "/opt1"
-        version: "jboss-6.1.0.Final"
-        serverConf: "standard"
-        bindAddress: "0.0.0.0"
-        user: "jboss"       
-        libs:
-            ojdbc5.jar:
-                libFile: "/vagrant/files/ojdbc5.jar"   
+    baseDir: "/opt"
+    version: "jboss-6.1.0.Final"
+    serverConf: "standard"
+    bindAddress: "0.0.0.0"
+    user: "jboss"       
+    libs:
+        ojdbc5.jar:
+            libFile: "/vagrant/files/ojdbc5.jar"   
+    datasources:
+            mobilePanel:
+                dsClass: "oracle.jdbc.xa.client.OracleXADataSource"
+                dsUrl: "jdbc:oracle:thin:@127.0.0.1:1521:XE"
+                dsUser: "mobilepanel"
+                dsPassword: "password"
+                dsExceptionSorterClass: "org.jboss.resource.adapter.jdbc.vendor.OracleExceptionSorter"
+                dsTypeMapping: "Oracle11g"

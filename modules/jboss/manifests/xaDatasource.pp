@@ -1,4 +1,4 @@
-class jboss::xaDatasource(
+define jboss::xaDatasource(
     $dsJndiName = $name,
     $dsClass,
     $dsUrl,
@@ -8,12 +8,16 @@ class jboss::xaDatasource(
     $dsTypeMapping,
     $baseDir,
     $version,
-    $serverConf
+    $serverConf,
+    $user,
+    $group
 ) 
 {
     file {
         "$baseDir/$version/server/$serverConf/deploy/$name-xa-ds.xml":
             ensure => present,
+            owner => $user,
+            group => $group,
             content => template("jboss/xa-ds.xml.erb");
     }
 }
