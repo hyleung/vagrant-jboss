@@ -1,12 +1,13 @@
 define jboss::lib(
-    $baseDir,
-    $version,
-    $serverConf,
-    $libFile
+    $libDir,
+    $libFile,
+    $user,
+    $group
 ) {
     file {
-        "$baseDir/$version/server/$serverConf/lib/$name":
+        "$libDir/$name":
             source => $libFile,            
-            ensure => present;
+            ensure => present,
+            owner => $user;
     } 
 }

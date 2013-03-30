@@ -1,11 +1,10 @@
 # JBoss Application Server
 jboss::install:
-            baseDir: "/opt1"
-            version: "jboss-6.1.0.Final"
-            serverConf: "standard"
-            bindAddress: "0.0.0.0"
-            user: "jboss"
-jboss::lib:        
+        baseDir: "/opt1"
+        version: "jboss-6.1.0.Final"
+        serverConf: "standard"
+        bindAddress: "0.0.0.0"
+        user: "jboss"       
         libs:
             ojdbc5.jar:
                 libFile: "/vagrant/files/ojdbc5.jar"   
