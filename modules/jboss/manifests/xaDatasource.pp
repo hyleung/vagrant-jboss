@@ -1,4 +1,4 @@
-define jboss::xaDatasource(
+class jboss::xaDatasource(
     $dsJndiName = $name,
     $dsClass,
     $dsUrl,

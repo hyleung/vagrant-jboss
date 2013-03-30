@@ -1,9 +1,10 @@
-define jboss::install($baseDir,  
+class jboss::install($baseDir,  
                     $version,
                     $serverConf = "standard",
                     $bindAddress = "0.0.0.0",
-                    $user = "jboss",
-                    $libs) {
+                    $user = "jboss") {
+    $installDir = "$baseDir/$version"
+    $serverBaseDir = "$installDir/server/$serverConf"
     group {
         "${user}":
             ensure => present;
