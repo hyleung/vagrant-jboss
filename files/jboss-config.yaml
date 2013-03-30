@@ -1,10 +1,12 @@
 # JBoss Application Server
-jboss::as:
-  jbossas1:
-    basedir:      '/apps/jbossas1'
-    bind_address: '0.0.0.0'
-    group:        'jboss'
-    java_home:    '/usr/java/default/'
-    java_opts:    "-Xms1536m -Xmx1536m -XX:MaxPermSize=512m -Djboss.bind.address.management=%{ipaddress_eth0} -Djava.net.preferIPv4Stack=true"
-    logdir:       '/apps/jbossas1/logs'
-    version:      '6.1.0.Final'
+jboss::install:
+    as1:
+        baseDir: "/opt"
+        version: "jboss-6.1.0.Final"
+        serverConf: "standard"
+        bindAddress: "0.0.0.0"
+        user: "jboss"
+        libs:
+            ojdbc5.jar:
+                libFile: "/vagrant/files/ojdbc5.jar"   
+

@@ -2,7 +2,8 @@ define jboss::install($baseDir,
                     $version,
                     $serverConf = "standard",
                     $bindAddress = "0.0.0.0",
-                    $user = "jboss") {
+                    $user = "jboss",
+                    $libs) {
     group {
         "${user}":
             ensure => present;
@@ -13,10 +14,14 @@ define jboss::install($baseDir,
             gid => "${user}",
             require => Group["${user}"];
     }
+    file { ["/var","/var/lib","/var/lib/puppet","/var/lib/puppet/files"]:
+        ensure => directory
+    }
     file {
         "/var/lib/puppet/files/${version}.zip":
             ensure => present,
-            source => "puppet:///modules/jboss/${version}.zip";
+            source => "puppet:///modules/jboss/${version}.zip",
+            require => File["/var/lib/puppet/files"];
         "${baseDir}":
             ensure => directory;           
     }
