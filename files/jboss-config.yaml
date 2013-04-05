@@ -16,5 +16,3 @@ jboss::install:
                 dsPassword: "password"
                 dsExceptionSorterClass: "org.jboss.resource.adapter.jdbc.vendor.OracleExceptionSorter"
                 dsTypeMapping: "Oracle11g"
-    deployFiles:
-        - "/vagrant/files/fileserver.conf"
